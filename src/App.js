@@ -1,25 +1,36 @@
-import logo from './logo.svg';
 import './App.css';
+import styled from "styled-components";
+// import {useState} from "react";
+import Board from "./components/Board";
+import {ProvideBoard} from "./services/useBoard";
+import MovesList from "./components/MovesList";
+import ScoringBoard from "./components/ScoringBoard";
+
+const Button = styled.a`
+`;
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (
+        <div className="App">
+            <ProvideBoard>
+                <header className="App-header">
+
+                    <h1>Reverso</h1>
+                    <ScoringBoard />
+                    <Board/>
+                    <Button
+                        className="App-link"
+                        href="https://reactjs.org"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        Learn Othello
+                    </Button>
+                    <MovesList/>
+                </header>
+            </ProvideBoard>
+        </div>
+    );
 }
 
 export default App;
