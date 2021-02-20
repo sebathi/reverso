@@ -1,12 +1,14 @@
 # build environment
-# FROM node:alpine as build
-# WORKDIR /app
-# ENV PATH /app/node_modules/.bin:$PATH
-# COPY ./public .
-# COPY ./package.json .
-# RUN yarn install
-# RUN mkdir /app/build
-# RUN yarn build
+FROM node:alpine as build
+RUN mkdir /app
+WORKDIR /app
+ENV PATH /app/node_modules/.bin:$PATH
+COPY ./public ./public
+COPY ./package.json .
+COPY ./src ./src
+RUN ls public
+RUN yarn install
+RUN yarn build
 
 # production environment
 FROM nginx:stable-alpine
