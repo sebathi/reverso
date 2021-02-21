@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Reverso",
+  "name": "Reversi example made by Sebathi",
   "icons": [
     {
       "src": "favicon.ico",

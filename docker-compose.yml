@@ -3,9 +3,20 @@ services:
   reverso:
     container_name: reverso
     image: registry.digitalocean.com/sebathi/reverso:latest
-    ports: 
-      - 80
+    expose: 
+      - "80"
     environment:
       - VIRTUAL_HOST=reverso.thierer.com.ar
       - LETSENCRYPT_HOST=reverso.thierer.com.ar
       - LETSENCRYPT_EMAIL=sebathi@gmail.com
+    labels:
+      - traefik.backend=wolfsohn-backend
+      - traefik.frontend.rule=Host:wolfsohn.localhost
+      - traefik.enable=true
+      - traefik.port=80
+      - traefik.default.protocol=http
+
+networks:
+  default:
+    external:
+      name: traefikproxy_ingress
