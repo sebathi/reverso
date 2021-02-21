@@ -3,7 +3,8 @@ services:
   reverso:
     container_name: reverso
     image: registry.digitalocean.com/sebathi/reverso:latest
-    expose: 80
+    ports: 
+      - 80
     environment:
       - VIRTUAL_HOST=reverso.thierer.com.ar
       - LETSENCRYPT_HOST=reverso.thierer.com.ar
