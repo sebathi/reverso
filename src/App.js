@@ -18,14 +18,6 @@ function App() {
                     <h1>Reverso</h1>
                     <ScoringBoard />
                     <Board/>
-                    <Button
-                        className="App-link"
-                        href="https://reactjs.org"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
-                        Learn Othello
-                    </Button>
                     <MovesList/>
                 </header>
             </ProvideBoard>
