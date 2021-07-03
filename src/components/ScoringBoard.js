@@ -1,13 +1,15 @@
 import * as React from 'react';
 import {black, useBoard, white} from "../services/useBoard";
+import { Button } from 'antd';
 
 
 const ScoringBoard = (props) => {
     const {blackQty, whiteQty, turn, restart} = useBoard();
     const showRestartButton = ()=>{
-        if (turn!==null){
-            return <a href="#" onClick={(e)=>restart()}>Restart</a>
-        }
+        // if (turn==null){
+            return <Button type="primary" onClick={(e)=>restart()} >Restart</Button>
+            // <a href="#" onClick={(e)=>restart()}>Restart</a>
+        // }
     }
 
     return (
