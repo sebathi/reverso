@@ -1,21 +1,21 @@
-kind: pipeline
-type: docker
-name: registerToContainer
+# kind: pipeline
+# type: docker
+# name: registerToContainer
 
 
-steps:
-  - name: reverso  
-    image: plugins/docker
-    settings:
-      repo: registry.digitalocean.com/sebathi/reverso
-      registry: registry.digitalocean.com/sebathi
-      dockerfile: ./Dockerfile
-      tags: 
-        - 'latest'
-      config: 
-        from_secret: do_registry_config
+# steps:
+#   - name: reverso  
+#     image: plugins/docker
+#     settings:
+#       repo: registry.digitalocean.com/sebathi/reverso
+#       registry: registry.digitalocean.com/sebathi
+#       dockerfile: ./Dockerfile
+#       tags: 
+#         - 'latest'
+#       config: 
+#         from_secret: do_registry_config
 
----
+# ---
 kind: pipeline
 type: ssh
 name: deploy
@@ -34,8 +34,8 @@ steps:
   commands:
   - sh /apps/reverso/updateReverso.sh
 
-depends_on:
-  - "registerToContainer"
+# depends_on:
+#   - "registerToContainer"
 trigger:
   branch:
     include:
