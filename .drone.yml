@@ -40,3 +40,4 @@ trigger:
   branch:
     include:
     - master
+    - main
