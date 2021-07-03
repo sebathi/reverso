@@ -14,3 +14,20 @@ steps:
         - 'latest'
       config: 
         from_secret: do_registry_config
+
+---
+kind: pipeline
+type: ssh
+name: default
+
+server:
+  host: thierer.com.ar
+  user: 
+    from_secret: username
+  ssh_key:
+    from_secret: ssh_key
+
+steps:
+- name: build
+  commands:
+  - sh /apps/reverso/updateReverso.sh
