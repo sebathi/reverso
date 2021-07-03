@@ -22,6 +22,8 @@ name: deploy
 
 server:
   host: thierer.com.ar
+  port: 
+    from_secret: port
   user: 
     from_secret: username
   ssh_key:
@@ -34,3 +36,7 @@ steps:
 
 depends_on:
   - "registerToContainer"
+trigger:
+  branch:
+    include:
+    - master
