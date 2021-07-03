@@ -18,7 +18,7 @@ steps:
 ---
 kind: pipeline
 type: ssh
-name: default
+name: deploy
 
 server:
   host: thierer.com.ar
@@ -31,3 +31,6 @@ steps:
 - name: build
   commands:
   - sh /apps/reverso/updateReverso.sh
+
+depends_on:
+  - "registerToContainer"
