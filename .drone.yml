@@ -1,43 +1,43 @@
-# kind: pipeline
-# type: docker
-# name: registerToContainer
-
-
-# steps:
-#   - name: reverso  
-#     image: plugins/docker
-#     settings:
-#       repo: registry.digitalocean.com/sebathi/reverso
-#       registry: registry.digitalocean.com/sebathi
-#       dockerfile: ./Dockerfile
-#       tags: 
-#         - 'latest'
-#       config: 
-#         from_secret: do_registry_config
-
-# ---
 kind: pipeline
-type: ssh
-name: deploy
+type: docker
+name: registerToContainer
 
-server:
-  host: thierer.com.ar
-  port: 
-    from_secret: port
-  user: 
-    from_secret: username
-  ssh_key:
-    from_secret: ssh_key
 
 steps:
-- name: build
-  commands:
-  - sh /apps/reverso/updateReverso.sh
+  - name: reverso  
+    image: plugins/docker
+    settings:
+      repo: registry.digitalocean.com/sebathi/reverso
+      registry: registry.digitalocean.com/sebathi
+      dockerfile: ./Dockerfile
+      tags: 
+        - 'latest'
+      config: 
+        from_secret: do_registry_config
 
-# depends_on:
-#   - "registerToContainer"
-trigger:
-  branch:
-    include:
-    - master
-    - main
+# # ---
+# kind: pipeline
+# type: ssh
+# name: deploy
+
+# server:
+#   host: thierer.com.ar
+#   port: 
+#     from_secret: port
+#   user: 
+#     from_secret: username
+#   ssh_key:
+#     from_secret: ssh_key
+
+# steps:
+# - name: build
+#   commands:
+#   - sh /apps/reverso/updateReverso.sh
+
+# # depends_on:
+# #   - "registerToContainer"
+# trigger:
+#   branch:
+#     include:
+#     - master
+#     - main
